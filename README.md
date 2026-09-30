@@ -70,11 +70,6 @@
 
 https://tyomagit.github.io/kr1-html-css-shop/
 
-## Ссылка на репозиторий для сдачи в СДО
-
-https://github.com/tyomagit/kr1-html-css-shop
-
-Скопируйте эту ссылку при сдаче работы в СДО.
 
 ## CSS-архитектура
 
