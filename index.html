@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <meta name="description" content="Главная страница учебного интернет-магазина: преимущества, популярные товары и форма заявки.">
+  <title>Главная — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css?v=3">
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -15,9 +16,11 @@
       <nav class="site-nav" aria-label="Основная навигация">
         <ul class="site-nav__list">
           <li><a href="index.html">Главная</a></li>
-          <li><a href="#popular">Популярные товары</a></li>
-          <li><a href="#advantages">Преимущества</a></li>
-          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="index.html#advantages">Преимущества</a></li>
+          <li><a href="index.html#popular">Популярные товары</a></li>
+          <li><a href="index.html#contacts">Обратная связь</a></li>
         </ul>
       </nav>
     </div>
@@ -27,9 +30,9 @@
     <section class="hero">
       <h1>Учебный интернет-магазин</h1>
       <p>
-        Это стартовая страница учебного frontend-проекта.
-        В дальнейшем на её основе будет разработан многостраничный сайт
-        интернет-магазина или каталога услуг.
+        Это главная страница учебного интернет-магазина.
+        На сайте доступны каталог товаров, контактная информация
+        и форма заявки в модальном окне.
       </p>
       <a class="button" href="#popular">Перейти к товарам</a>
     </section>
@@ -41,7 +44,7 @@
         <li>понятная HTML-структура;</li>
         <li>семантические блоки страницы;</li>
         <li>подключение внешнего CSS-файла;</li>
-        <li>подготовка к разработке многостраничного сайта.</li>
+        <li>единая навигация между страницами.</li>
       </ul>
     </section>
 
@@ -85,7 +88,7 @@
       <h2>Информация для студентов</h2>
       <p>
         На следующих практических занятиях этот проект будет расширяться:
-        появятся дополнительные страницы и адаптивная версия сайта.
+        появятся более подробные карточки товаров и адаптивная версия сайта.
       </p>
     </aside>
   </main>
@@ -93,6 +96,7 @@
   <footer id="contacts">
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
+    <p>Для отправки заявки нажмите «Заказать» в разделе <a href="index.html#popular">«Популярные товары»</a>.</p>
   </footer>
 
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
