@@ -120,6 +120,7 @@ header {
 }
 
 footer {
+  padding-bottom: calc(var(--space-lg) * 3);
   background-color: var(--color-surface);
 }
 
@@ -386,4 +387,12 @@ footer {
   padding: var(--space-md);
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
+}
+
+/* Видимый пример fixed-позиционирования на всех страницах. */
+.back-to-top {
+  position: fixed;
+  left: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 1;
 }
