@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Каталог товаров учебного интернет-магазина.">
   <title>Каталог товаров — Учебный интернет-магазин</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <header>
@@ -35,38 +35,75 @@
       <h1>Каталог товаров</h1>
       <p>
         На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        Слева размещена учебная форма фильтров, справа — список товаров.
+        В дальнейшем будут добавлены фильтрация, сортировка и более подробные карточки.
       </p>
     </section>
 
-    <section class="section">
-      <h2>Список товаров</h2>
-      <div class="product-grid">
-        <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 1</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
-          <a class="button product-card__button" href="index.html#popular">Подробнее</a>
-        </article>
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2>Фильтры</h2>
 
-        <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 2</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
-          <a class="button product-card__button" href="index.html#popular">Подробнее</a>
-        </article>
+        <form class="filters-form" action="#" method="get">
+          <fieldset>
+            <legend>Категория</legend>
 
-        <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 3</h3>
-          <p class="product-card__description">Краткое описание учебного товара.</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
-          <a class="button product-card__button" href="index.html#popular">Подробнее</a>
-        </article>
-      </div>
+            <label>
+              <input type="checkbox" name="category" value="all">
+              Все товары
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="popular">
+              Популярные
+            </label>
+            <label>
+              <input type="checkbox" name="category" value="new">
+              Новинки
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Цена</legend>
+
+            <label for="price-from">От</label>
+            <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
+
+            <label for="price-to">До</label>
+            <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+          </fieldset>
+
+          <button class="button" type="submit">Применить</button>
+        </form>
+      </aside>
+
+      <section class="catalog-products">
+        <h2>Список товаров</h2>
+        <div class="products-grid">
+          <article class="product-card">
+            <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
+            <h3 class="product-card__title">Товар 1</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 1000 руб.</p>
+            <a class="button product-card__button" href="index.html#popular">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
+            <h3 class="product-card__title">Товар 2</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 1500 руб.</p>
+            <a class="button product-card__button" href="index.html#popular">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
+            <h3 class="product-card__title">Товар 3</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 2000 руб.</p>
+            <a class="button product-card__button" href="index.html#popular">Подробнее</a>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
 
