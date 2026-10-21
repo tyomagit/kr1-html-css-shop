@@ -141,7 +141,7 @@ a:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   padding: 0;
   margin: var(--space-md) 0 0;
   list-style: none;
@@ -149,7 +149,7 @@ a:focus-visible {
 
 .site-nav__link {
   display: inline-block;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm);
   color: var(--color-primary);
   text-decoration: none;
   border-radius: var(--radius-sm);
@@ -193,7 +193,10 @@ a:focus-visible {
   margin: 0 auto var(--space-xl);
 }
 
-.section__title {
+.section__title,
+.catalog-filters__title,
+.catalog-layout__title,
+.aside-info__title {
   margin-top: 0;
 }
 
@@ -238,7 +241,7 @@ a:focus-visible {
 
 .product-card__button {
   align-self: flex-start;
-  margin-top: auto;
+  margin-top: 0;
 }
 
 .catalog-layout {
@@ -406,3 +409,57 @@ a:focus-visible {
 .product-card--discount { border-color: var(--color-danger); }
 .order-form__field--checkbox { display: flex; align-items: center; gap: var(--space-sm); }
 .order-form__input--error, .order-form__select--error, .order-form__textarea--error { border-color: var(--color-danger); }
+
+/* Практика 8: страницы товара и заявки, дополнительные компоненты. */
+.site-footer { text-align: center; }
+.site-footer__text { margin: var(--space-sm) 0; }
+.site-footer__link { display: inline-block; margin: var(--space-sm); }
+.product-card { --badge-color: var(--color-primary); }
+.product-card--discount { --badge-color: var(--color-danger); }
+.product-card__badge {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-white);
+  background-color: var(--badge-color);
+}
+.product-card__description { flex-grow: 1; color: var(--color-muted); }
+.product-card__price { font-weight: 700; }
+.catalog-layout { align-items: start; }
+.catalog-filters { position: sticky; top: var(--space-lg); }
+.catalog-filters__hint { margin: 0; color: var(--color-muted); font-size: 14px; }
+.product-details {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  align-items: start;
+  gap: var(--space-xl);
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  scroll-margin-top: var(--space-lg);
+}
+.product-details__image { width: 100%; height: auto; border-radius: var(--radius-md); }
+.product-details__price { font-size: 22px; font-weight: 700; }
+.product-details__availability { color: #126d25; }
+.product-details__info { min-width: 0; }
+.table-scroll { overflow-x: auto; }
+.product-table { width: 100%; border-collapse: collapse; }
+.product-table__caption { margin-bottom: var(--space-md); text-align: left; font-weight: 700; }
+.product-table__heading, .product-table__cell { padding: var(--space-md); border: 1px solid var(--color-border); text-align: left; }
+.product-table__heading { background-color: var(--color-surface-accent); }
+.order-page { max-width: 720px; }
+.order-form__note, .order-form__hint { color: var(--color-muted); }
+.order-form__actions { flex-wrap: wrap; }
+.order-form__label { margin-bottom: var(--space-xs); }
+.order-form__field--checkbox { align-items: baseline; }
+.order-form__checkbox--error { outline: 2px solid var(--color-danger); outline-offset: 2px; }
+.order-dialog { max-height: calc(100vh - var(--space-xl)); overflow-y: auto; }
+.success-message { z-index: 2; border: 1px solid var(--color-success); border-left-width: 4px; }
+.faq__item { padding: var(--space-md); border-bottom: 1px solid var(--color-border); }
+.faq__question { cursor: pointer; font-weight: 700; }
+.faq__question:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.faq__answer { margin-bottom: 0; }
+.contact-info { font-style: normal; }
+.contact-info__item { margin: var(--space-md) 0; }
