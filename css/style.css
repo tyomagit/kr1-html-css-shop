@@ -463,3 +463,25 @@ a:focus-visible {
 .faq__answer { margin-bottom: 0; }
 .contact-info { font-style: normal; }
 .contact-info__item { margin: var(--space-md) 0; }
+
+/* Блок отзывов и самостоятельная карточка отзыва. */
+.reviews { scroll-margin-top: var(--space-lg); }
+.reviews__intro { margin-bottom: var(--space-lg); color: var(--color-muted); }
+.reviews__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+}
+.review-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg);
+}
+.review-card__author { margin: 0 0 var(--space-xs); font-size: 20px; }
+.review-card__product { font-size: 14px; }
+.review-card__rating { margin: var(--space-md) 0; color: var(--color-primary); letter-spacing: 2px; }
+.review-card__quote { margin: 0; }
+.review-card__text { margin: 0; }
