@@ -1,74 +1,71 @@
-// Получаем модальное окно по id.
+// Классы отвечают за оформление, data-product — за действие кнопки.
 const orderDialog = document.getElementById('order-dialog');
-
-// Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
-
-// Получаем кнопку закрытия модального окна.
+const orderForm = document.getElementById('order-form');
+const selectedProductInput = document.getElementById('selected-product');
+const successMessage = document.getElementById('success-message');
 const closeDialogButton = document.getElementById('close-order-dialog');
 
-// Получаем скрытое поле, в которое будет записан выбранный товар.
-const selectedProductInput = document.getElementById('selected-product');
-
-// Перебираем все кнопки «Заказать».
-orderButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    // Получаем название товара из data-атрибута.
-    const productName = button.dataset.product;
-
-    // Записываем название товара в скрытое поле формы.
-    selectedProductInput.value = productName;
-
-    // Открываем модальное окно.
-    orderDialog.showModal();
-  });
-});
-
-// Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
-
-// Получаем форму заявки.
-const orderForm = document.getElementById('order-form');
-
-// Получаем сообщение об успешной отправке.
-const successMessage = document.getElementById('success-message');
-
-// Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  // Отменяем стандартную отправку формы,
-  // потому что backend пока не подключён.
-  event.preventDefault();
-
-  // Сбрасываем предыдущие признаки ошибок.
-  const formElements = Array.from(orderForm.elements);
-
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
-    }
+if (orderDialog) {
+  document.querySelectorAll('[data-product]').forEach((button) => {
+    button.addEventListener('click', () => {
+      orderForm.reset();
+      selectedProductInput.value = button.dataset.product;
+      document.getElementById('order-topic').value = 'product';
+      successMessage.hidden = true;
+      orderDialog.showModal();
+    });
   });
 
-  // Проверяем встроенные HTML-ограничения формы.
-  if (!orderForm.checkValidity()) {
-    formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
+  closeDialogButton.addEventListener('click', () => {
+    orderDialog.close();
+  });
+}
+
+if (orderForm) {
+  // Состояние ошибки получает модификатор того же БЭМ-элемента.
+  function setFieldError(field, invalid) {
+    field.setAttribute('aria-invalid', String(invalid));
+    ['input', 'select', 'textarea', 'checkbox'].forEach((type) => {
+      if (field.classList.contains('order-form__' + type)) {
+        field.classList.toggle('order-form__' + type + '--error', invalid);
       }
     });
-
-    // Показываем стандартные сообщения браузера.
-    orderForm.reportValidity();
-    return;
   }
 
-  // Показываем сообщение об успешной отправке.
-  successMessage.hidden = false;
+  orderForm.addEventListener('input', (event) => {
+    if (event.target.hasAttribute('aria-invalid')) {
+      setFieldError(event.target, !event.target.checkValidity());
+    }
+    successMessage.hidden = true;
+  });
 
-  // Очищаем форму.
-  orderForm.reset();
+  orderForm.addEventListener('reset', () => {
+    Array.from(orderForm.elements).forEach((field) => {
+      if (field.willValidate) {
+        setFieldError(field, false);
+        field.removeAttribute('aria-invalid');
+      }
+    });
+    successMessage.hidden = true;
+  });
 
-  // Закрываем модальное окно.
-  orderDialog.close();
-});
+  orderForm.addEventListener('submit', (event) => {
+    // Backend не подключён: персональные данные никуда не отправляются.
+    event.preventDefault();
+    successMessage.hidden = true;
+    Array.from(orderForm.elements).forEach((field) => {
+      if (field.willValidate) setFieldError(field, !field.checkValidity());
+    });
+
+    if (!orderForm.checkValidity()) {
+      orderForm.reportValidity();
+      return;
+    }
+
+    orderForm.reset();
+    if (orderDialog) orderDialog.close();
+    successMessage.hidden = false;
+    // В диалоге браузер возвращает фокус на кнопку открытия.
+    if (!orderDialog) successMessage.focus();
+  });
+}
