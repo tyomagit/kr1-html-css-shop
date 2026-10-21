@@ -37,6 +37,7 @@
         подробные характеристики и заявка на отдельной странице или в модальном окне.
       </p>
       <a class="button button--primary" href="#popular">Перейти к товарам</a>
+      <a class="button button--secondary" href="#reviews">Читать отзывы</a>
     </section>
 
     <section class="section" id="advantages">
@@ -84,6 +85,37 @@
       </div>
     </section>
 
+    <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
+      <h2 class="section__title" id="reviews-title">Отзывы о товарах</h2>
+      <p class="reviews__intro">Примеры отзывов для учебного проекта. Имена и тексты вымышлены.</p>
+      <div class="reviews__list">
+        <article class="review-card" aria-labelledby="review-alexey">
+          <h3 class="review-card__author" id="review-alexey">Алексей</h3>
+          <a class="review-card__product" href="product.html#product-1">Товар 1 · Базовая комплектация</a>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">Для повседневных задач мне подходит базовая модель. В описании сразу видно комплектацию и цену — удобно выбирать.</p>
+          </blockquote>
+        </article>
+        <article class="review-card" aria-labelledby="review-maria">
+          <h3 class="review-card__author" id="review-maria">Мария</h3>
+          <a class="review-card__product" href="product.html#product-2">Товар 2 · Расширенная комплектация</a>
+          <p class="review-card__rating" aria-label="Оценка: 4 из 5"><span aria-hidden="true">★★★★☆</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">Выбрала вариант с дополнительными принадлежностями. Таблица сравнения помогла разобраться, чем он отличается от остальных моделей.</p>
+          </blockquote>
+        </article>
+        <article class="review-card" aria-labelledby="review-dmitry">
+          <h3 class="review-card__author" id="review-dmitry">Дмитрий</h3>
+          <a class="review-card__product" href="product.html#product-3">Товар 3 · Полная комплектация</a>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">Мне важен чехол для хранения, поэтому выбрал полную комплектацию. Понравилось, что подробное описание открывается прямо из карточки.</p>
+          </blockquote>
+        </article>
+      </div>
+    </section>
+
     <aside class="aside-info">
       <h2 class="aside-info__title">Информация для студентов</h2>
       <p>
@@ -109,6 +141,7 @@
     <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
     <a class="site-footer__link" href="order.html">Оформить заявку</a>
     <a class="site-footer__link" href="contacts.html">Контакты магазина</a>
+    <a class="site-footer__link" href="index.html#reviews">Отзывы</a>
   </footer>
   <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
     <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
