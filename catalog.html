@@ -46,7 +46,7 @@
       <aside class="catalog-filters">
         <h2 class="catalog-filters__title">Фильтры</h2>
 
-        <form class="catalog-filters__form" action="#" method="get">
+        <form class="catalog-filters__form" action="catalog.html" method="get" data-catalog-filters aria-describedby="filter-hint">
           <fieldset class="catalog-filters__group">
             <legend class="catalog-filters__legend">Категория</legend>
 
@@ -76,21 +76,42 @@
             <legend class="catalog-filters__legend">Цена</legend>
 
             <label class="catalog-filters__label" for="price-from">От</label>
-            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" placeholder="0">
+            <input class="catalog-filters__input" id="price-from" name="price-from" type="number" min="0" step="1" inputmode="numeric" placeholder="0">
 
             <label class="catalog-filters__label" for="price-to">До</label>
-            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" placeholder="5000">
+            <input class="catalog-filters__input" id="price-to" name="price-to" type="number" min="0" step="1" inputmode="numeric" placeholder="5000">
           </fieldset>
 
-          <button class="button button--primary" type="submit" disabled>Применить</button>
-          <p class="catalog-filters__hint">Макет фильтров. Отбор товаров пока недоступен.</p>
+          <p class="catalog-filters__error" id="filter-error" role="alert" hidden></p>
+          <button class="button button--primary" type="submit">Применить фильтры</button>
+          <button class="button button--secondary" type="reset">Сбросить</button>
+          <p class="catalog-filters__hint" id="filter-hint">Выберите одну или несколько категорий и укажите цену в рублях. Затем примените фильтры.</p>
+          <noscript><p class="catalog-filters__hint">Для фильтрации включите JavaScript. Сейчас показаны все товары.</p></noscript>
         </form>
       </aside>
 
       <section class="catalog-layout__products">
-        <h2 class="catalog-layout__title">Список товаров</h2>
-        <div class="products-grid">
-        <article class="product-card product-card--featured">
+        <div class="catalog-layout__toolbar">
+          <div class="catalog-layout__summary">
+            <h2 class="catalog-layout__title">Список товаров</h2>
+            <p class="catalog-layout__count" data-catalog-count role="status" aria-live="polite" aria-atomic="true">Показано 6 из 6</p>
+          </div>
+          <label class="catalog-layout__sort-label" for="catalog-sort">Сортировка
+            <select class="catalog-layout__sort" id="catalog-sort" name="sort" data-catalog-sort>
+              <option value="default">По умолчанию</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="name">По названию</option>
+            </select>
+          </label>
+        </div>
+        <div class="catalog-layout__empty" data-catalog-empty hidden>
+          <h3 class="catalog-layout__empty-title">Пока ничего не нашлось</h3>
+          <p>Попробуйте выбрать другую категорию или расширить диапазон цен.</p>
+          <button class="button button--secondary" type="button" data-catalog-reset>Показать все товары</button>
+        </div>
+        <div class="products-grid products-grid--catalog" data-catalog-grid>
+        <article class="product-card product-card--featured" data-category="audio" data-price="1000">
           <span class="product-card__badge">Хит</span>
           <img class="product-card__img" src="images/products/headphones.webp" alt="Чёрные полноразмерные наушники на жёлтом фоне" width="1080" height="810" loading="lazy" decoding="async">
           <p class="product-card__category">Аудио</p>
@@ -98,10 +119,12 @@
           <p class="product-card__description">Полноразмерные наушники с мягкими амбушюрами для музыки, видеолекций и спокойной работы за компьютером.</p>
           <a class="product-card__reviews" href="index.html#review-1">Отзыв о товаре · 5/5</a>
           <p class="product-card__price">1 000 ₽</p>
-          <a class="button button--secondary product-card__button" href="product.html#product-1">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Наушники Studio">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-1">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Наушники Studio">Заказать</button>
+          </div>
         </article>
-        <article class="product-card product-card--discount">
+        <article class="product-card product-card--discount" data-category="peripherals" data-price="1500">
           <span class="product-card__badge">Скидка</span>
           <img class="product-card__img" src="images/products/keyboard.webp" alt="Компактная механическая клавиатура со светлыми клавишами" width="1080" height="608" loading="lazy" decoding="async">
           <p class="product-card__category">Периферия</p>
@@ -109,10 +132,12 @@
           <p class="product-card__description">Механическая клавиатура в компактном корпусе. Освобождает место на столе и подходит для набора текста, учёбы и программирования.</p>
           <a class="product-card__reviews" href="index.html#review-2">Отзыв о товаре · 4/5</a>
           <p class="product-card__price">1 500 ₽ <del class="product-card__old-price">1 800 ₽</del></p>
-          <a class="button button--secondary product-card__button" href="product.html#product-2">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Клавиатура Compact">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-2">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Клавиатура Compact">Заказать</button>
+          </div>
         </article>
-        <article class="product-card">
+        <article class="product-card" data-category="peripherals" data-price="2000">
           <span class="product-card__badge">Новинка</span>
           <img class="product-card__img" src="images/products/mouse.webp" alt="Чёрная беспроводная компьютерная мышь на светлой поверхности" width="1080" height="720" loading="lazy" decoding="async">
           <p class="product-card__category">Периферия</p>
@@ -120,38 +145,46 @@
           <p class="product-card__description">Лаконичная беспроводная мышь для повседневных задач. Подходит для документов, браузера и работы с ноутбуком дома или в офисе.</p>
           <a class="product-card__reviews" href="index.html#review-3">Отзыв о товаре · 5/5</a>
           <p class="product-card__price">2 000 ₽</p>
-          <a class="button button--secondary product-card__button" href="product.html#product-3">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Беспроводная мышь">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-3">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Беспроводная мышь">Заказать</button>
+          </div>
         </article>
-        <article class="product-card">
+        <article class="product-card" data-category="lighting" data-price="2500">
           <img class="product-card__img" src="images/products/lamp.webp" alt="Светлая настольная лампа с направляемым плафоном" width="1080" height="720" loading="lazy" decoding="async">
           <p class="product-card__category">Освещение</p>
           <h3 class="product-card__title">Настольная лампа</h3>
           <p class="product-card__description">Настольная лампа со светлым корпусом и направляемым плафоном. Помогает осветить тетрадь, книгу или рабочую поверхность.</p>
           <a class="product-card__reviews" href="index.html#review-4">Отзыв о товаре · 5/5</a>
           <p class="product-card__price">2 500 ₽</p>
-          <a class="button button--secondary product-card__button" href="product.html#product-4">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Настольная лампа">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-4">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Настольная лампа">Заказать</button>
+          </div>
         </article>
-        <article class="product-card">
+        <article class="product-card" data-category="bags" data-price="3000">
           <img class="product-card__img" src="images/products/backpack.webp" alt="Коричневый городской рюкзак с передним карманом" width="601" height="900" loading="lazy" decoding="async">
           <p class="product-card__category">Сумки</p>
           <h3 class="product-card__title">Городской рюкзак</h3>
           <p class="product-card__description">Городской рюкзак с основным отделением и передним карманом. Для книг, ежедневных вещей и поездок на учёбу или работу.</p>
           <a class="product-card__reviews" href="index.html#review-5">Отзыв о товаре · 4/5</a>
           <p class="product-card__price">3 000 ₽</p>
-          <a class="button button--secondary product-card__button" href="product.html#product-5">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Городской рюкзак">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-5">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="Городской рюкзак">Заказать</button>
+          </div>
         </article>
-        <article class="product-card">
+        <article class="product-card" data-category="accessories" data-price="3500">
           <img class="product-card__img" src="images/products/usb-hub.webp" alt="Чёрный USB-разветвитель с несколькими портами и выключателями" width="1080" height="720" loading="lazy" decoding="async">
           <p class="product-card__category">Аксессуары</p>
           <h3 class="product-card__title">USB-разветвитель</h3>
           <p class="product-card__description">USB-разветвитель для подключения нескольких аксессуаров к компьютеру. Отдельные выключатели позволяют управлять подключёнными устройствами.</p>
           <a class="product-card__reviews" href="index.html#review-6">Отзыв о товаре · 5/5</a>
           <p class="product-card__price">3 500 ₽</p>
-          <a class="button button--secondary product-card__button" href="product.html#product-6">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="USB-разветвитель">Заказать</button>
+          <div class="product-card__actions">
+            <a class="button button--secondary product-card__button" href="product.html#product-6">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" data-product="USB-разветвитель">Заказать</button>
+          </div>
         </article>
         </div>
       </section>

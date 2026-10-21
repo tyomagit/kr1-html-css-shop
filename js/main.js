@@ -69,3 +69,89 @@ if (orderForm) {
     if (!orderDialog) successMessage.focus();
   });
 }
+
+// Фильтр работает с данными карточек; несколько категорий объединяются по «или».
+const catalogFilters = document.querySelector('[data-catalog-filters]');
+
+if (catalogFilters) {
+  const catalogGrid = document.querySelector('[data-catalog-grid]');
+  const catalogCards = Array.from(catalogGrid.querySelectorAll('[data-category][data-price]'));
+  const catalogCount = document.querySelector('[data-catalog-count]');
+  const catalogEmpty = document.querySelector('[data-catalog-empty]');
+  const catalogSort = document.querySelector('[data-catalog-sort]');
+  const priceFrom = catalogFilters.elements.namedItem('price-from');
+  const priceTo = catalogFilters.elements.namedItem('price-to');
+  const filterError = document.getElementById('filter-error');
+  // Сортировка сохраняет уже применённый отбор до следующего нажатия «Применить».
+  let activeCategories = [];
+  let minimumPrice = 0;
+  let maximumPrice = Infinity;
+
+  function clearPriceError() {
+    priceTo.setCustomValidity('');
+    priceTo.removeAttribute('aria-invalid');
+    priceTo.removeAttribute('aria-describedby');
+    filterError.hidden = true;
+    filterError.textContent = '';
+  }
+
+  function renderCatalog() {
+    const orderedCards = catalogCards.slice();
+    const sort = catalogSort.value;
+    if (sort === 'price-asc' || sort === 'price-desc') {
+      orderedCards.sort((a, b) => (Number(a.dataset.price) - Number(b.dataset.price)) * (sort === 'price-asc' ? 1 : -1));
+    } else if (sort === 'name') {
+      orderedCards.sort((a, b) => a.querySelector('.product-card__title').textContent.localeCompare(b.querySelector('.product-card__title').textContent, 'ru'));
+    }
+    let visibleCount = 0;
+    orderedCards.forEach((card) => {
+      const price = Number(card.dataset.price);
+      const matchesCategory = activeCategories.length === 0 || activeCategories.includes(card.dataset.category);
+      const matchesPrice = price >= minimumPrice && price <= maximumPrice;
+      card.hidden = !(matchesCategory && matchesPrice);
+      if (!card.hidden) visibleCount += 1;
+      catalogGrid.append(card);
+    });
+    catalogCount.textContent = `Показано ${visibleCount} из ${catalogCards.length}`;
+    catalogEmpty.hidden = visibleCount !== 0;
+    catalogGrid.hidden = visibleCount === 0;
+  }
+
+  catalogFilters.addEventListener('input', clearPriceError);
+  catalogFilters.addEventListener('submit', (event) => {
+    event.preventDefault();
+    clearPriceError();
+    if (!catalogFilters.reportValidity()) return;
+    const from = priceFrom.value === '' ? 0 : Number(priceFrom.value);
+    const to = priceTo.value === '' ? Infinity : Number(priceTo.value);
+    if (from > to) {
+      const message = 'Цена «До» должна быть не меньше цены «От».';
+      priceTo.setCustomValidity(message);
+      priceTo.setAttribute('aria-invalid', 'true');
+      priceTo.setAttribute('aria-describedby', 'filter-error');
+      filterError.textContent = message;
+      filterError.hidden = false;
+      priceTo.reportValidity();
+      return;
+    }
+    activeCategories = Array.from(catalogFilters.querySelectorAll('[name="category"]:checked'), (checkbox) => checkbox.value);
+    minimumPrice = from;
+    maximumPrice = to;
+    renderCatalog();
+  });
+
+  catalogSort.addEventListener('change', renderCatalog);
+  catalogFilters.addEventListener('reset', () => {
+    clearPriceError();
+    activeCategories = [];
+    minimumPrice = 0;
+    maximumPrice = Infinity;
+    catalogSort.value = 'default';
+    renderCatalog();
+  });
+  document.querySelector('[data-catalog-reset]').addEventListener('click', () => {
+    catalogFilters.reset();
+    catalogFilters.querySelector('[type="reset"]').focus();
+  });
+  renderCatalog();
+}
