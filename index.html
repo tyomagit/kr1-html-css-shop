@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Учебный интернет-магазин: преимущества, популярные товары и ответы на вопросы.">
-  <title>Главная — Учебный интернет-магазин</title>
+  <meta name="description" content="ShopProject — техника и аксессуары для работы и учёбы. Шесть товаров с фотографиями, характеристиками и отзывами.">
+  <title>Главная — ShopProject</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
 </head>
@@ -30,24 +30,21 @@
   <main class="page-main">
 
     <section class="hero">
-      <h1>Учебный интернет-магазин</h1>
-      <p>
-        Это главная страница учебного интернет-магазина.
-        На сайте доступны каталог товаров, контактная информация,
-        подробные характеристики и заявка на отдельной странице или в модальном окне.
-      </p>
+      <p class="hero__eyebrow">Для работы, учёбы и каждый день</p>
+      <h1 class="hero__title">Соберите удобное рабочее место</h1>
+      <p class="hero__description">Техника и аксессуары, которые делают повседневные задачи приятнее. Сравните шесть товаров, посмотрите детали и выберите своё.</p>
       <a class="button button--primary" href="#popular">Перейти к товарам</a>
       <a class="button button--secondary" href="#reviews">Читать отзывы</a>
     </section>
 
     <section class="section" id="advantages">
-      <h2 class="section__title">Преимущества проекта</h2>
+      <h2 class="section__title">Выбирать удобно</h2>
 
       <ul class="advantages-list">
-        <li>понятная HTML-структура;</li>
-        <li>семантические блоки страницы;</li>
-        <li>подключение внешнего CSS-файла;</li>
-        <li>единая навигация между страницами.</li>
+        <li>фотографии и подробные описания каждого товара;</li>
+        <li>характеристики и цены для сравнения;</li>
+        <li>отзывы о каждой позиции;</li>
+        <li>быстрая заявка с выбранным товаром.</li>
       </ul>
     </section>
 
@@ -57,94 +54,130 @@
       <div class="products-grid">
         <article class="product-card product-card--featured">
           <span class="product-card__badge">Хит</span>
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 1</h3>
-          <p class="product-card__description">Базовая модель для знакомства с ассортиментом. Компактный вариант для повседневного использования.</p>
-          <p class="product-card__price">Цена: 1000 руб.</p>
+          <img class="product-card__img" src="images/products/headphones.webp" alt="Чёрные полноразмерные наушники на жёлтом фоне" width="1080" height="810" loading="lazy" decoding="async">
+          <p class="product-card__category">Аудио</p>
+          <h3 class="product-card__title">Наушники Studio</h3>
+          <p class="product-card__description">Полноразмерные наушники с мягкими амбушюрами для музыки, видеолекций и спокойной работы за компьютером.</p>
+          <a class="product-card__reviews" href="index.html#review-1">Отзыв о товаре · 5/5</a>
+          <p class="product-card__price">1 000 ₽</p>
           <a class="button button--secondary product-card__button" href="product.html#product-1">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 1">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="Наушники Studio">Заказать</button>
         </article>
         <article class="product-card product-card--discount">
           <span class="product-card__badge">Скидка</span>
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 2</h3>
-          <p class="product-card__description">Модель с расширенной комплектацией. Подходит, если нужны дополнительные принадлежности.</p>
-          <p class="product-card__price">Цена: 1500 руб.</p>
+          <img class="product-card__img" src="images/products/keyboard.webp" alt="Компактная механическая клавиатура со светлыми клавишами" width="1080" height="608" loading="lazy" decoding="async">
+          <p class="product-card__category">Периферия</p>
+          <h3 class="product-card__title">Клавиатура Compact</h3>
+          <p class="product-card__description">Механическая клавиатура в компактном корпусе. Освобождает место на столе и подходит для набора текста, учёбы и программирования.</p>
+          <a class="product-card__reviews" href="index.html#review-2">Отзыв о товаре · 4/5</a>
+          <p class="product-card__price">1 500 ₽ <del class="product-card__old-price">1 800 ₽</del></p>
           <a class="button button--secondary product-card__button" href="product.html#product-2">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 2">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="Клавиатура Compact">Заказать</button>
         </article>
         <article class="product-card">
           <span class="product-card__badge">Новинка</span>
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 3</h3>
-          <p class="product-card__description">Модель с полной комплектацией и защитным чехлом для хранения.</p>
-          <p class="product-card__price">Цена: 2000 руб.</p>
+          <img class="product-card__img" src="images/products/mouse.webp" alt="Чёрная беспроводная компьютерная мышь на светлой поверхности" width="1080" height="720" loading="lazy" decoding="async">
+          <p class="product-card__category">Периферия</p>
+          <h3 class="product-card__title">Беспроводная мышь</h3>
+          <p class="product-card__description">Лаконичная беспроводная мышь для повседневных задач. Подходит для документов, браузера и работы с ноутбуком дома или в офисе.</p>
+          <a class="product-card__reviews" href="index.html#review-3">Отзыв о товаре · 5/5</a>
+          <p class="product-card__price">2 000 ₽</p>
           <a class="button button--secondary product-card__button" href="product.html#product-3">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 3">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="Беспроводная мышь">Заказать</button>
         </article>
         <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 4</h3>
-          <p class="product-card__description">Компактная модель с органайзером для принадлежностей. Удобный вариант для небольшого рабочего места.</p>
-          <p class="product-card__price">Цена: 2500 руб.</p>
+          <img class="product-card__img" src="images/products/lamp.webp" alt="Светлая настольная лампа с направляемым плафоном" width="1080" height="720" loading="lazy" decoding="async">
+          <p class="product-card__category">Освещение</p>
+          <h3 class="product-card__title">Настольная лампа</h3>
+          <p class="product-card__description">Настольная лампа со светлым корпусом и направляемым плафоном. Помогает осветить тетрадь, книгу или рабочую поверхность.</p>
+          <a class="product-card__reviews" href="index.html#review-4">Отзыв о товаре · 5/5</a>
+          <p class="product-card__price">2 500 ₽</p>
           <a class="button button--secondary product-card__button" href="product.html#product-4">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 4">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="Настольная лампа">Заказать</button>
         </article>
         <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 5</h3>
-          <p class="product-card__description">Дорожная модель с сумкой для переноски. Подходит для использования вне дома и в поездках.</p>
-          <p class="product-card__price">Цена: 3000 руб.</p>
+          <img class="product-card__img" src="images/products/backpack.webp" alt="Коричневый городской рюкзак с передним карманом" width="601" height="900" loading="lazy" decoding="async">
+          <p class="product-card__category">Сумки</p>
+          <h3 class="product-card__title">Городской рюкзак</h3>
+          <p class="product-card__description">Городской рюкзак с основным отделением и передним карманом. Для книг, ежедневных вещей и поездок на учёбу или работу.</p>
+          <a class="product-card__reviews" href="index.html#review-5">Отзыв о товаре · 4/5</a>
+          <p class="product-card__price">3 000 ₽</p>
           <a class="button button--secondary product-card__button" href="product.html#product-5">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 5">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="Городской рюкзак">Заказать</button>
         </article>
         <article class="product-card">
-          <img class="product-card__img" src="images/product-placeholder.svg" alt="" width="320" height="120">
-          <h3 class="product-card__title">Товар 6</h3>
-          <p class="product-card__description">Расширенный набор с дополнительными принадлежностями и футляром. Вариант для тех, кому нужна полная организация хранения.</p>
-          <p class="product-card__price">Цена: 3500 руб.</p>
+          <img class="product-card__img" src="images/products/usb-hub.webp" alt="Чёрный USB-разветвитель с несколькими портами и выключателями" width="1080" height="720" loading="lazy" decoding="async">
+          <p class="product-card__category">Аксессуары</p>
+          <h3 class="product-card__title">USB-разветвитель</h3>
+          <p class="product-card__description">USB-разветвитель для подключения нескольких аксессуаров к компьютеру. Отдельные выключатели позволяют управлять подключёнными устройствами.</p>
+          <a class="product-card__reviews" href="index.html#review-6">Отзыв о товаре · 5/5</a>
+          <p class="product-card__price">3 500 ₽</p>
           <a class="button button--secondary product-card__button" href="product.html#product-6">Подробнее</a>
-          <button class="button button--primary product-card__button" type="button" data-product="Товар 6">Заказать</button>
+          <button class="button button--primary product-card__button" type="button" data-product="USB-разветвитель">Заказать</button>
         </article>
       </div>
     </section>
 
     <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
       <h2 class="section__title" id="reviews-title">Отзывы о товарах</h2>
-      <p class="reviews__intro">Примеры отзывов для учебного проекта. Имена и тексты вымышлены.</p>
+      <p class="reviews__intro">Шесть товаров — шесть историй. Отзывы приведены как учебные примеры, имена и тексты вымышлены.</p>
       <div class="reviews__list">
-        <article class="review-card" aria-labelledby="review-alexey">
-          <h3 class="review-card__author" id="review-alexey">Алексей</h3>
-          <a class="review-card__product" href="product.html#product-1">Товар 1 · Базовая комплектация</a>
+        <article class="review-card" id="review-1" aria-labelledby="review-1-author">
+          <h3 class="review-card__author" id="review-1-author">Алексей</h3>
+          <a class="review-card__product" href="product.html#product-1">Наушники Studio</a>
           <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
           <blockquote class="review-card__quote">
-            <p class="review-card__text">Для повседневных задач мне подходит базовая модель. В описании сразу видно комплектацию и цену — удобно выбирать.</p>
+            <p class="review-card__text">Брал для музыки и видеолекций. Амбушюры мягкие, на голове сидят удобно. Нравится, что наушники закрывают уши целиком — легче сосредоточиться.</p>
           </blockquote>
         </article>
-        <article class="review-card" aria-labelledby="review-maria">
-          <h3 class="review-card__author" id="review-maria">Мария</h3>
-          <a class="review-card__product" href="product.html#product-2">Товар 2 · Расширенная комплектация</a>
+        <article class="review-card" id="review-2" aria-labelledby="review-2-author">
+          <h3 class="review-card__author" id="review-2-author">Мария</h3>
+          <a class="review-card__product" href="product.html#product-2">Клавиатура Compact</a>
           <p class="review-card__rating" aria-label="Оценка: 4 из 5"><span aria-hidden="true">★★★★☆</span></p>
           <blockquote class="review-card__quote">
-            <p class="review-card__text">Выбрала вариант с дополнительными принадлежностями. Таблица сравнения помогла разобраться, чем он отличается от остальных моделей.</p>
+            <p class="review-card__text">Перешла с большой клавиатуры — теперь для мыши заметно больше места. Печатать приятно. Клавиши слышно, поэтому для совсем тихого кабинета я бы это учитывала.</p>
           </blockquote>
         </article>
-        <article class="review-card" aria-labelledby="review-dmitry">
-          <h3 class="review-card__author" id="review-dmitry">Дмитрий</h3>
-          <a class="review-card__product" href="product.html#product-3">Товар 3 · Полная комплектация</a>
+        <article class="review-card" id="review-3" aria-labelledby="review-3-author">
+          <h3 class="review-card__author" id="review-3-author">Дмитрий</h3>
+          <a class="review-card__product" href="product.html#product-3">Беспроводная мышь</a>
           <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
           <blockquote class="review-card__quote">
-            <p class="review-card__text">Мне важен чехол для хранения, поэтому выбрал полную комплектацию. Понравилось, что подробное описание открывается прямо из карточки.</p>
+            <p class="review-card__text">Использую с ноутбуком для документов и браузера. Мышь лёгкая, рука не устаёт, провод больше не цепляется за край стола. Для обычной работы мне подходит.</p>
+          </blockquote>
+        </article>
+        <article class="review-card" id="review-4" aria-labelledby="review-4-author">
+          <h3 class="review-card__author" id="review-4-author">Анна</h3>
+          <a class="review-card__product" href="product.html#product-4">Настольная лампа</a>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">Поставила рядом с ноутбуком. Можно направить свет на тетрадь, не освещая всю комнату. Светлый корпус хорошо вписался в мой рабочий уголок.</p>
+          </blockquote>
+        </article>
+        <article class="review-card" id="review-5" aria-labelledby="review-5-author">
+          <h3 class="review-card__author" id="review-5-author">Елена</h3>
+          <a class="review-card__product" href="product.html#product-5">Городской рюкзак</a>
+          <p class="review-card__rating" aria-label="Оценка: 4 из 5"><span aria-hidden="true">★★★★☆</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">Ношу на учёбу: тетради и книга помещаются, ключи храню в переднем кармане. Цвет спокойный и сочетается с повседневной одеждой. Хотелось бы ещё один внутренний карман.</p>
+          </blockquote>
+        </article>
+        <article class="review-card" id="review-6" aria-labelledby="review-6-author">
+          <h3 class="review-card__author" id="review-6-author">Илья</h3>
+          <a class="review-card__product" href="product.html#product-6">USB-разветвитель</a>
+          <p class="review-card__rating" aria-label="Оценка: 5 из 5"><span aria-hidden="true">★★★★★</span></p>
+          <blockquote class="review-card__quote">
+            <p class="review-card__text">У ноутбука мало разъёмов, поэтому подключил через хаб мышь и клавиатуру. Удобно, что порты можно отключать отдельно. На столе стало проще организовать подключения.</p>
           </blockquote>
         </article>
       </div>
     </section>
 
     <aside class="aside-info">
-      <h2 class="aside-info__title">Информация для студентов</h2>
+      <h2 class="aside-info__title">Нужна помощь с выбором?</h2>
       <p>
-        Выберите товар в каталоге, сравните характеристики и заполните заявку.
-        Сайт учебный: оформление заявки демонстрирует проверку формы без реального заказа.
+        Сравните товары или выберите консультацию в форме заявки.
+        <a href="order.html">Перейти к заявке</a>
       </p>
     </aside>
 
@@ -152,7 +185,7 @@
       <h2 class="section__title" id="faq-title">Частые вопросы</h2>
       <details class="faq__item">
         <summary class="faq__question">Как выбрать товар?</summary>
-        <p class="faq__answer">Откройте каталог и перейдите по ссылке «Подробнее». На странице товаров есть описание каждой модели и таблица сравнения.</p>
+        <p class="faq__answer">Откройте каталог и перейдите по ссылке «Подробнее». У каждого товара есть фотография, описание, особенности и отзыв.</p>
       </details>
       <details class="faq__item">
         <summary class="faq__question">Можно ли оформить настоящий заказ?</summary>
@@ -161,7 +194,7 @@
     </section>
   </main>
   <footer class="site-footer" id="contacts">
-    <p class="site-footer__text">&copy; 2026 Учебный интернет-магазин ShopProject</p>
+    <p class="site-footer__text">&copy; 2026 ShopProject · Техника и аксессуары</p>
     <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
     <a class="site-footer__link" href="order.html">Оформить заявку</a>
     <a class="site-footer__link" href="contacts.html">Контакты магазина</a>
@@ -175,12 +208,12 @@
         <label class="order-form__label" for="selected-product">Товар или консультация</label>
         <select class="order-form__select" id="selected-product" name="product" required>
           <option value="">Выберите товар или консультацию</option>
-          <option value="Товар 1">Товар 1 — 1000 руб.</option>
-          <option value="Товар 2">Товар 2 — 1500 руб.</option>
-          <option value="Товар 3">Товар 3 — 2000 руб.</option>
-          <option value="Товар 4">Товар 4 — 2500 руб.</option>
-          <option value="Товар 5">Товар 5 — 3000 руб.</option>
-          <option value="Товар 6">Товар 6 — 3500 руб.</option>
+          <option value="Наушники Studio">Наушники Studio — 1 000 ₽</option>
+          <option value="Клавиатура Compact">Клавиатура Compact — 1 500 ₽</option>
+          <option value="Беспроводная мышь">Беспроводная мышь — 2 000 ₽</option>
+          <option value="Настольная лампа">Настольная лампа — 2 500 ₽</option>
+          <option value="Городской рюкзак">Городской рюкзак — 3 000 ₽</option>
+          <option value="USB-разветвитель">USB-разветвитель — 3 500 ₽</option>
           <option value="Консультация">Консультация по ассортименту</option>
         </select>
       </div>
