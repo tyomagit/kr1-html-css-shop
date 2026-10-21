@@ -22,11 +22,12 @@
   --radius-md: 18px;
   --radius-lg: 28px;
   --container-width: 1180px;
+  --header-height: 88px;
   --shadow-card: 0 12px 32px rgba(32, 60, 52, 0.06);
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-height) + var(--space-md)); }
 body {
   margin: 0;
   font-family: "Avenir Next", "Segoe UI", Arial, sans-serif;
@@ -50,8 +51,17 @@ h2 { font-size: clamp(24px, 3vw, 30px); }
 button, input, select, textarea { font: inherit; }
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 
-/* Общее меню и подвал. */
-.site-header { padding: 20px 28px; border-bottom: 1px solid var(--color-border); background: var(--color-surface); }
+/* Общее меню и подвал. Меню закреплено вверху каждой страницы. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: box-shadow 180ms, border-color 180ms;
+}
+.site-header--stuck { border-bottom-color: transparent; box-shadow: 0 10px 24px rgba(21, 62, 50, 0.12); }
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -162,7 +172,7 @@ button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 
 /* Каталог и доступная панель фильтрации. */
 .catalog-layout { display: grid; grid-template-columns: 230px minmax(0, 1fr); grid-template-areas: "filters products"; align-items: start; gap: 26px; max-width: var(--container-width); margin: 0 auto 48px; }
-.catalog-filters { grid-area: filters; position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow-y: auto; padding: 22px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.catalog-filters { grid-area: filters; position: sticky; top: calc(var(--header-height) + 20px); max-height: calc(100vh - var(--header-height) - 40px); overflow-y: auto; padding: 22px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
 .catalog-filters__title { margin: 0 0 22px; font-size: 22px; }
 .catalog-filters__form { display: grid; gap: 12px; }
 .catalog-filters__group { min-width: 0; margin: 0 0 8px; padding: 0; border: none; }
@@ -206,7 +216,13 @@ input[type="checkbox"] { width: 16px; height: 16px; margin-right: 6px; vertical-
 .review-card__text { margin: 0; color: var(--color-muted); font-size: 14px; }
 .faq__item { padding: 22px 24px; margin-bottom: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
 .faq__question { cursor: pointer; font-weight: 600; }
-.faq__answer { margin-bottom: 0; color: var(--color-muted); }
+.faq__item[open] .faq__question { color: var(--color-primary); }
+.faq__answer { color: var(--color-muted); }
+.faq__answer > :first-child { margin-top: 14px; }
+.faq__answer p { margin: 0 0 10px; }
+.faq__answer ul, .faq__answer ol { margin: 0 0 10px; padding-left: 22px; }
+.faq__answer li { margin-bottom: 6px; }
+.faq__answer > :last-child { margin-bottom: 0; }
 .contact-info { font-style: normal; }
 .contact-info__item { margin: 16px 0; }
 

@@ -1,3 +1,33 @@
+// Шапка закреплена вверху: высота хранится в CSS-переменной для якорей и «липкого» фильтра.
+const siteHeader = document.querySelector('.site-header');
+
+if (siteHeader) {
+  const root = document.documentElement;
+  let scrollTicking = false;
+
+  function syncHeaderHeight() {
+    root.style.setProperty('--header-height', `${siteHeader.offsetHeight}px`);
+  }
+
+  function syncHeaderShadow() {
+    siteHeader.classList.toggle('site-header--stuck', window.scrollY > 8);
+    scrollTicking = false;
+  }
+
+  syncHeaderHeight();
+  syncHeaderShadow();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(syncHeaderShadow);
+    }
+  }, { passive: true });
+  // Шрифты и перенос пунктов меню меняют высоту шапки.
+  if ('ResizeObserver' in window) new ResizeObserver(syncHeaderHeight).observe(siteHeader);
+  if (document.fonts) document.fonts.ready.then(syncHeaderHeight);
+}
+
 // Классы отвечают за оформление, data-product — за действие кнопки.
 const orderDialog = document.getElementById('order-dialog');
 const orderForm = document.getElementById('order-form');
