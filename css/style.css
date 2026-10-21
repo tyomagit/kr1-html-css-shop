@@ -58,9 +58,9 @@ body {
   background-color: var(--color-bg);
 }
 
-header,
-main,
-footer {
+.site-header,
+.page-main,
+.site-footer {
   padding: var(--space-lg);
 }
 
@@ -81,8 +81,7 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-.button,
-.form-actions button {
+.button {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-white);
@@ -93,20 +92,17 @@ a:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-.button:hover,
-.form-actions button:hover {
+.button:hover {
   color: var(--color-white);
   background-color: var(--color-primary-dark);
 }
 
-.button:focus-visible,
-.form-actions button:focus-visible {
+.button:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-.button:disabled,
-.form-actions button:disabled {
+.button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -115,16 +111,16 @@ a:focus-visible {
    4. Компоненты страницы
    =============================== */
 
-header {
+.site-header {
   background-color: var(--color-surface);
 }
 
-footer {
+.site-footer {
   padding-bottom: calc(var(--space-lg) * 3);
   background-color: var(--color-surface);
 }
 
-.site-header {
+.site-header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,7 +130,7 @@ footer {
   margin: 0 auto;
 }
 
-.site-logo {
+.site-header__logo {
   font-weight: bold;
   text-decoration: none;
   color: var(--color-text);
@@ -151,7 +147,7 @@ footer {
   list-style: none;
 }
 
-.site-nav__list a {
+.site-nav__link {
   display: inline-block;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
@@ -159,11 +155,11 @@ footer {
   border-radius: var(--radius-sm);
 }
 
-.site-logo:hover {
+.site-header__logo:hover {
   color: var(--color-primary-dark);
 }
 
-.site-nav__list a:hover {
+.site-nav__link:hover {
   color: var(--color-white);
   background-color: var(--color-primary);
 }
@@ -175,11 +171,11 @@ footer {
   color: var(--color-muted);
 }
 
-.breadcrumbs a {
+.breadcrumbs__link {
   color: var(--color-primary);
 }
 
-.breadcrumbs span::before {
+.breadcrumbs__current::before {
   content: " / ";
   color: var(--color-muted);
 }
@@ -197,7 +193,7 @@ footer {
   margin: 0 auto var(--space-xl);
 }
 
-.section h2 {
+.section__title {
   margin-top: 0;
 }
 
@@ -240,7 +236,7 @@ footer {
   margin: 0;
 }
 
-.product-card .button {
+.product-card__button {
   align-self: flex-start;
   margin-top: auto;
 }
@@ -262,32 +258,32 @@ footer {
   background-color: var(--color-surface);
 }
 
-.catalog-products {
+.catalog-layout__products {
   grid-area: products;
 }
 
-.filters-form {
+.catalog-filters__form {
   display: grid;
   gap: var(--space-md);
 }
 
-.filters-form fieldset {
+.catalog-filters__group {
   margin: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
 }
 
-.filters-form legend {
+.catalog-filters__legend {
   font-weight: 700;
 }
 
-.filters-form label {
+.catalog-filters__label {
   display: block;
   margin-bottom: var(--space-sm);
 }
 
-.filters-form input[type="number"] {
+.catalog-filters__input {
   width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--color-border);
@@ -318,18 +314,18 @@ footer {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.form-field {
+.order-form__field {
   margin-bottom: var(--space-md);
 }
 
-.form-field label {
+.order-form__label {
   display: block;
   margin-bottom: var(--space-xs);
 }
 
-.form-field input,
-.form-field select,
-.form-field textarea {
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--color-border);
@@ -337,42 +333,43 @@ footer {
   font: inherit;
 }
 
-.form-field input[type="checkbox"] {
+.order-form__checkbox {
   width: auto;
+  accent-color: var(--color-primary);
 }
 
-.form-field small {
+.order-form__hint {
   display: block;
   margin-top: var(--space-xs);
   color: var(--color-muted);
 }
 
-.form-field input:hover,
-.form-field select:hover,
-.form-field textarea:hover {
+.order-form__input:hover,
+.order-form__select:hover,
+.order-form__textarea:hover {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus {
+.order-form__input:focus,
+.order-form__select:focus,
+.order-form__textarea:focus {
   border-color: var(--color-primary);
 }
 
-.form-field input:focus-visible,
-.form-field select:focus-visible,
-.form-field textarea:focus-visible {
+.order-form__input:focus-visible,
+.order-form__select:focus-visible,
+.order-form__textarea:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
 }
 
-.form-field input[aria-invalid="true"],
-.form-field select[aria-invalid="true"],
-.form-field textarea[aria-invalid="true"] {
+.order-form__input[aria-invalid="true"],
+.order-form__select[aria-invalid="true"],
+.order-form__textarea[aria-invalid="true"] {
   border-color: var(--color-danger);
 }
 
-.form-actions {
+.order-form__actions {
   display: flex;
   gap: var(--space-md);
   margin-top: var(--space-lg);
@@ -396,3 +393,16 @@ footer {
   bottom: var(--space-lg);
   z-index: 1;
 }
+
+/* Варианты и состояния самостоятельных БЭМ-блоков. */
+.button { font: inherit; }
+.button--primary { color: var(--color-white); background-color: var(--color-primary); }
+.button--secondary { color: var(--color-primary); background-color: transparent; border: 1px solid var(--color-primary); }
+.button--secondary:hover { color: var(--color-white); background-color: var(--color-primary); }
+.site-nav__link--active { color: var(--color-white); background-color: var(--color-primary); }
+.site-nav__link:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.order-dialog__title { margin-top: 0; }
+.product-card--featured { border-color: var(--color-primary); }
+.product-card--discount { border-color: var(--color-danger); }
+.order-form__field--checkbox { display: flex; align-items: center; gap: var(--space-sm); }
+.order-form__input--error, .order-form__select--error, .order-form__textarea--error { border-color: var(--color-danger); }

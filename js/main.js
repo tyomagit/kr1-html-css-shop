@@ -2,7 +2,7 @@
 const orderDialog = document.getElementById('order-dialog');
 
 // Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
+const orderButtons = document.querySelectorAll('[data-product]');
 
 // Получаем кнопку закрытия модального окна.
 const closeDialogButton = document.getElementById('close-order-dialog');
@@ -47,6 +47,7 @@ orderForm.addEventListener('submit', (event) => {
   formElements.forEach((element) => {
     if (element.willValidate) {
       element.removeAttribute('aria-invalid');
+      element.classList.remove('order-form__input--error', 'order-form__select--error', 'order-form__textarea--error');
     }
   });
 
@@ -55,6 +56,9 @@ orderForm.addEventListener('submit', (event) => {
     formElements.forEach((element) => {
       if (element.willValidate && !element.checkValidity()) {
         element.setAttribute('aria-invalid', 'true');
+        if (element.classList.contains('order-form__input')) element.classList.add('order-form__input--error');
+        if (element.classList.contains('order-form__select')) element.classList.add('order-form__select--error');
+        if (element.classList.contains('order-form__textarea')) element.classList.add('order-form__textarea--error');
       }
     });
 
